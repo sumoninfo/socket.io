@@ -62,20 +62,29 @@
 <body>
 <h2 id="myTime"></h2>
 <hr>
-<ul id="messages"></ul>
+<input type="text" , id="name">
+<button type="button" onclick="send()" id="send">Send</button>
+
+<!--<ul id="messages"></ul>
 <form id="form" action="">
     <input id="input" autocomplete="off"/>
     <button>Send</button>
-</form>
+</form>-->
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
     const socket = io();
 
-    socket.on('myEvent', function (msg) {
+    function send() {
+        let name = document.getElementById('name').value;
+        socket.send(name);
+
+    }
+
+    /*socket.on('myEvent', function (msg) {
         document.getElementById('myTime').innerHTML = "";
         document.getElementById('myTime').innerHTML = msg;
-    })
+    })*/
 
     const messages = document.getElementById('messages');
     const form     = document.getElementById('form');

@@ -8,21 +8,24 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-    socket.on('chat_message', msg => {
+    socket.on('message', function (msg) {
+        console.log(msg);
+    })
+    /*socket.on('chat_message', msg => {
         io.emit('chat_message', msg);
-    });
+    });*/
     console.log('User connected');
     // setTimeout(function () {
     //     socket.send("hello sumon")
     // }, 2000)
 
 
-    setInterval(function () {
+    /*setInterval(function () {
         let d = new Date();
         let t = d.getTime();
         console.log(t, 'time')
         socket.emit('myEvent', t)
-    }, 500)
+    }, 500)*/
 });
 
 http.listen(port, () => {
