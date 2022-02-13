@@ -12,8 +12,16 @@ io.on('connection', (socket) => {
         io.emit('chat_message', msg);
     });
     console.log('User connected');
-    setTimeout(function () {
-        socket.send("hello sumon")
+    // setTimeout(function () {
+    //     socket.send("hello sumon")
+    // }, 2000)
+
+
+    setInterval(function () {
+        let d = new Date();
+        let t = d.getTime();
+        console.log(t, 'time')
+        socket.send(t)
     }, 2000)
 });
 
