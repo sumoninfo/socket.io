@@ -6,8 +6,13 @@ const expressServer = http.createServer(app)
 const {Server} = require('socket.io')
 const io       = new Server(expressServer)
 
-app.get('/express-server', (req, res) => {
-    res.end("This is my backend")
+
+const path = require('path')
+app.use(express.static('client/build'))
+
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
 })
 
 io.on('connection', (socket) => {
