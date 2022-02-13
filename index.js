@@ -8,9 +8,11 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-    socket.on('customEvent', function (msg) {
-        console.log(msg);
-    })
+    io.sockets.emit("MyBroadcast", "Hello Everyone welcome")
+
+    /* socket.on('customEvent', function (msg) {
+         console.log(msg);
+     })*/
     /*socket.on('chat_message', msg => {
         io.emit('chat_message', msg);
     });*/
