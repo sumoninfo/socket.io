@@ -21,8 +21,8 @@ io.on('connection', (socket) => {
         let d = new Date();
         let t = d.getTime();
         console.log(t, 'time')
-        socket.send(t)
-    }, 2000)
+        socket.emit('myEvent', t)
+    }, 500)
 });
 
 http.listen(port, () => {

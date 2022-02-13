@@ -72,7 +72,7 @@
 <script>
     const socket = io();
 
-    socket.on('message', function (msg) {
+    socket.on('myEvent', function (msg) {
         document.getElementById('myTime').innerHTML = "";
         document.getElementById('myTime').innerHTML = msg;
     })
