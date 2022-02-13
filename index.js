@@ -11,7 +11,8 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
 
     socket.join('kitchen-room')
-    io.sockets.in('kitchen-room').emit('cooking', "Fried Rice Cooking")
+    const sizeOfKitchen = io.sockets.adapter.rooms.get('kitchen-room').size
+    io.sockets.in('kitchen-room').emit('cooking', `Fried Rice Cooking ${sizeOfKitchen}`)
     io.sockets.in('kitchen-room').emit('boiling', "Boiling water")
 
 

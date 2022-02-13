@@ -75,7 +75,7 @@
 <script>
     const socket = io();
 
-    socket.on('sleep', (data) => {
+    socket.on('cooking', (data) => {
         document.getElementById('msg').innerHTML = data;
     })
 
