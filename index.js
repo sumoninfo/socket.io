@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-    socket.on('message', function (msg) {
+    socket.on('customEvent', function (msg) {
         console.log(msg);
     })
     /*socket.on('chat_message', msg => {
