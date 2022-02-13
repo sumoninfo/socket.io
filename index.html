@@ -73,10 +73,16 @@
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
-    const socket = io();
-    socket.on('MyBroadcast', function (msg) {
+    const socket = io("/sell");
+    socket.on("sellNspEvent", function (msg) {
+        console.log(msg, "msg")
         document.getElementById('msg').innerHTML = msg;
     })
+
+
+    /*  socket.on('MyBroadcast', function (msg) {
+          document.getElementById('msg').innerHTML = msg;
+      })*/
     /*function send() {
         let name = document.getElementById('name').value;
         socket.emit('customEvent', name);
