@@ -18,6 +18,11 @@ app.get('*', (req, res) => {
 io.on('connection', (socket) => {
     console.log("New User Connected")
 
+    setTimeout(() => {
+        socket.emit('msg', "This message from server")
+    }, 5000)
+
+
     socket.on('disconnect', () => {
         console.log("User Disconnected")
     })
