@@ -73,11 +73,17 @@
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
-    const socket = io("/sell");
-    socket.on("sellNspEvent", function (msg) {
+    const socket = io();
+
+    socket.on('sleep', (data) => {
+        document.getElementById('msg').innerHTML = data;
+    })
+
+
+    /*socket.on("sellNspEvent", function (msg) {
         console.log(msg, "msg")
         document.getElementById('msg').innerHTML = msg;
-    })
+    })*/
 
 
     /*  socket.on('MyBroadcast', function (msg) {

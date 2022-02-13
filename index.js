@@ -7,7 +7,21 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-let buyNsp = io.of("/buy")
+//=========ROOM============
+io.on('connection', (socket) => {
+
+    socket.join('kitchen-room')
+    io.sockets.in('kitchen-room').emit('cooking', "Fried Rice Cooking")
+    io.sockets.in('kitchen-room').emit('boiling', "Boiling water")
+
+
+    socket.join('bed-room')
+    io.sockets.in('bed-room').emit('sleep', "I am sleeping")
+    io.sockets.in('bed-room').emit('rest', "I am taking rest")
+
+})
+
+/*let buyNsp = io.of("/buy")
 buyNsp.on('connection', function (socket) {
     buyNsp.emit("buyNspEvent", "message send from buy nsp event")
 })
@@ -15,7 +29,7 @@ buyNsp.on('connection', function (socket) {
 let sellNsp = io.of("/sell")
 sellNsp.on('connection', function (socket) {
     sellNsp.emit("sellNspEvent", "Message send from sell nsp event")
-})
+})*/
 /*io.on('connection', (socket) => {
     io.sockets.emit("MyBroadcast", "Hello Everyone welcome")
 
